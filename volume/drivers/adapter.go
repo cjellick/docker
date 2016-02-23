@@ -70,6 +70,10 @@ func (a *volumeDriverAdapter) Get(name string) (volume.Volume, error) {
 		return a.Create(name, nil)
 	}
 
+	if v == nil {
+		return nil, nil
+	}
+
 	return &volumeAdapter{
 		proxy:      a.proxy,
 		name:       v.Name,
